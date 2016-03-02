@@ -17,11 +17,12 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class Driver {
 static WebDriver driver;
 static Xls_Reader excelfile = new Xls_Reader("C:\\Excelf\\ProjectTestCases.xlsx");
+static Xls_Reader excelfile1 = new Xls_Reader("C:\\Excelf\\testresult.xlsx");
 static Homepage objhp;
 static Loginpage objlp;
 static String color;
 static String status;
-static Xls_write excelfile1 = new Xls_write();
+
 
 	public static void main(String[] args) throws IOException {
 		String brdata = excelfile.getCellData("Sheet1", 5, 3);
@@ -45,8 +46,8 @@ static Xls_write excelfile1 = new Xls_write();
 			
 			//Sheet s = excelfile.wb.getSheet("Sheet1");
 			//s.getRow(3).getCell(3).setCellValue("pass");
-			excelfile.createWorkbook("testresult.xlsx", "Sheet1");
-			excelfile.setResultData("Sheet1", 3, 3, "pass");
+			excelfile1.createWorkbook("testresult.xlsx", "Sheet1");
+			excelfile1.setResultData("Summary", 3, 3, status);
 			driver.close();
 		}
 		else if(brdata.equals("IE")){
